@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Omaha Odds Calculator</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Omaha Odds Calculator">
+  <meta name="author" content="RK Lin">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Omaha Odds Calculator</h1>
+    <h2>A brief introduction</h2>
+    <p>RK Lin<br/>Poker lover</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Omaha Poker Intro</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Omaha poker is a type of Hold&#39;em Poker that is popular in recent poker world.
+To be different than Texas Hold&#39;em ,it uses 2 out of the 4 cards in hand and 3 out of 5 hands on the public board. 
+<br>
+The rank of a hands is same as for Stud Poker. (Straight Flush &gt;Quads&gt;Full house&gt;Flush&gt;Straight&gt;Trips&gt;Two Pair&gt;Single Pair&gt;High Card)
+<br>
+For more details about Omaha poker, please check below link:
+<a href="https://en.wikipedia.org/wiki/Omaha_hold_&#x27;em">Omaha Hold&#39;em</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Omaha Rules,</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>After several player bet and decide to play their hands (preflop), 
+first three of the board cards is delivered together, this is know as &#39;the flop&#39;.
+<br>
+When the &#39;flop&#39; is dealt, one hand can already make a hand by combine either two from their own 4 card hands with the 3 cards on the flop. 
+<br>
+After bet round, the fourth card is dealt (the turn), and bet again.
+<br>
+Then, the final card (the river) is dealt and followed the final betting round.
+The hand with the best rank on the river win this total hand.
+ delivered. This fifth card is called as &#39;the river&#39;. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Omaha Hand Odds</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Different hand has differnt winning possiblity due to their different nature.
+For example, AAxx (a hand with a pair of Ace) has the best winning possiblity preflop, which means without dealing any of the board cards, AAxx has the best odds preflop. 
+<br>
+You may wonder how likely you can get AAxx ?
+<br>
+below is the code to calculate the possiblity:
+<br></p>
+
+<pre><code class="r">options(digits=4)
+pAA&lt;-choose(4,2)*choose(52-4,2)/choose(52,4)
+print(pAA)
+</code></pre>
+
+<pre><code>## [1] 0.025
+</code></pre>
+
+<p>So you can see the odds to get AAxx is about 2.5% out of all times. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <article data-timings="">
+    <p>##Odds Calculator</p>
+
+<p>This <a href="https://rklin.shinyapps.io/OmahaOddsCalculator">tool</a> is developed for calculation of specific odds for below three situation:</p>
+
+<ul>
+<li>preflop ( when no board card dealt)</li>
+<li>on the flop ( 3 cards dealt)</li>
+<li>on the turn ( 4 cards dealt)
+<br>
+To give an easy example, when AdAcJdTc against 5s6s7h8h on the board like
+Ah4h5cKc , any non club 3,6,7,8 and none 5 orK hearts (totally 14) will help the latter win the hand , rest does no help for it. So There are totally 52-4-4-4=40 cards left in the deck. 
+<br>
+So the oods Hand1 vs Hand 2 equals</li>
+</ul>
+
+<pre><code class="r">(40-14)/(52-12)
+</code></pre>
+
+<pre><code>## [1] 0.65
+</code></pre>
+
+<p><br>
+For more complicated calculation, you can use this odds calculation to help.
+<br>
+Thank you<sup><sup>.</sup></sup></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Omaha Poker Intro'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Omaha Rules,'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Omaha Hand Odds'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='NA'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

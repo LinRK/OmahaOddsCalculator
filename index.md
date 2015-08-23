@@ -1,0 +1,87 @@
+---
+title       : Omaha Odds Calculator
+subtitle    : A brief introduction              
+author      : RK Lin
+job         : Poker lover
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Omaha Poker Intro
+
+Omaha poker is a type of Hold'em Poker that is popular in recent poker world.
+To be different than Texas Hold'em ,it uses 2 out of the 4 cards in hand and 3 out of 5 hands on the public board. 
+<br>
+The rank of a hands is same as for Stud Poker. (Straight Flush >Quads>Full house>Flush>Straight>Trips>Two Pair>Single Pair>High Card)
+<br>
+For more details about Omaha poker, please check below link:
+[Omaha Hold'em] (https://en.wikipedia.org/wiki/Omaha_hold_'em)
+
+--- 
+
+## Omaha Rules, 
+
+After several player bet and decide to play their hands (preflop), 
+first three of the board cards is delivered together, this is know as 'the flop'.
+<br>
+When the 'flop' is dealt, one hand can already make a hand by combine either two from their own 4 card hands with the 3 cards on the flop. 
+<br>
+After bet round, the fourth card is dealt (the turn), and bet again.
+<br>
+Then, the final card (the river) is dealt and followed the final betting round.
+The hand with the best rank on the river win this total hand.
+ delivered. This fifth card is called as 'the river'. 
+
+---
+## Omaha Hand Odds
+
+Different hand has differnt winning possiblity due to their different nature.
+For example, AAxx (a hand with a pair of Ace) has the best winning possiblity preflop, which means without dealing any of the board cards, AAxx has the best odds preflop. 
+<br>
+You may wonder how likely you can get AAxx ?
+<br>
+below is the code to calculate the possiblity:
+<br>
+
+
+```r
+options(digits=4)
+pAA<-choose(4,2)*choose(52-4,2)/choose(52,4)
+print(pAA)
+```
+
+```
+## [1] 0.025
+```
+
+So you can see the odds to get AAxx is about 2.5% out of all times. 
+
+---
+
+##Odds Calculator
+
+This [tool](https://rklin.shinyapps.io/OmahaOddsCalculator) is developed for calculation of specific odds for below three situation:
+* preflop ( when no board card dealt)
+* on the flop ( 3 cards dealt)
+* on the turn ( 4 cards dealt)
+<br>
+To give an easy example, when AdAcJdTc against 5s6s7h8h on the board like
+Ah4h5cKc , any non club 3,6,7,8 and none 5 orK hearts (totally 14) will help the latter win the hand , rest does no help for it. So There are totally 52-4-4-4=40 cards left in the deck. 
+<br>
+So the oods Hand1 vs Hand 2 equals
+
+```r
+(40-14)/(52-12)
+```
+
+```
+## [1] 0.65
+```
+<br>
+For more complicated calculation, you can use this odds calculation to help.
+<br>
+Thank you^^.
