@@ -1,0 +1,8 @@
+name: OmahaOddsCalculator
+account: rklin
+server: shinyapps.io
+bundleId: 247920
+url: https://rklin.shinyapps.io/OmahaOddsCalculator
+when: 1440293934.76812
+asMultiple: FALSE
+asStatic: FALSE
